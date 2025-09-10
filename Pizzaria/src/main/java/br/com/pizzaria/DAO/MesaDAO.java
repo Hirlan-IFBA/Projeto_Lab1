@@ -15,7 +15,7 @@ public class MesaDAO {
         this.conexao = conexao;
     }
 
-    // Adiciona nova mesa
+   
     public void criarMesa(MesaModel mesa) throws SQLException {
         String sql = "INSERT INTO Mesa (status_mesa, Foreign_CPF_cliente) VALUES (?, ?)";
         try (PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -37,7 +37,7 @@ public class MesaDAO {
         }
     }
 
-    // Lista todas as mesas
+ 
     public List<MesaModel> listarMesas() throws SQLException {
         List<MesaModel> mesas = new ArrayList<>();
         String sql = "SELECT numero_mesa, status_mesa, Foreign_CPF_cliente FROM Mesa";
@@ -65,7 +65,7 @@ public class MesaDAO {
         return mesas;
     }
 
-    // Busca mesa por número
+   
     public MesaModel buscarMesa(int numeroMesa) throws SQLException {
         String sql = "SELECT numero_mesa, status_mesa, Foreign_CPF_cliente FROM Mesa WHERE numero_mesa = ?";
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
@@ -92,7 +92,6 @@ public class MesaDAO {
         return null;
     }
 
-    // Edita mesa existente
     public void alterarMesa(MesaModel mesa) throws SQLException {
         String sql = "UPDATE Mesa SET status_mesa = ?, Foreign_CPF_cliente = ? WHERE numero_mesa = ?";
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
@@ -109,7 +108,6 @@ public class MesaDAO {
         }
     }
 
-    // Deleta mesa pelo número
     public void excluirMesa(int numeroMesa) throws SQLException {
         String sql = "DELETE FROM Mesa WHERE numero_mesa = ?";
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
@@ -118,3 +116,4 @@ public class MesaDAO {
         }
     }
 }
+
