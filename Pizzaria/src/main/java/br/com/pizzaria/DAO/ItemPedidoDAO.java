@@ -35,9 +35,8 @@ public class ItemPedidoDAO {
         }
     }
 
-    // 🔹 Lista todos os itens
     public List<ItemPedidoModel> listarItensPedido() throws SQLException {
-        return listarItensPorMesa(null); // retorna todos quando sem filtro
+        return listarItensPorMesa(null);
     }
 
     public List<ItemPedidoModel> listarItensPorMesa(Integer numeroMesa) throws SQLException {
@@ -62,17 +61,17 @@ public class ItemPedidoDAO {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    // Cardápio
+                    
                     ItemCardapioModel cardapio = new ItemCardapioModel();
                     cardapio.setID_Cardapio(rs.getInt("ID_Cardapio"));
                     cardapio.setNome(rs.getString("nome_cardapio"));
                     cardapio.setPreco(rs.getDouble("preco_cardapio"));
 
-                    // Mesa
+              
                     MesaModel mesa = new MesaModel();
                     mesa.setNumeroMesa(rs.getInt("numero_mesa"));
 
-                    // Pedido
+    
                     PedidoModel pedido = new PedidoModel();
                     pedido.setID_Pedido(rs.getInt("ID_pedido"));
                     pedido.setHoraPedido(rs.getTimestamp("hora_pedido").toLocalDateTime());
@@ -106,7 +105,7 @@ public class ItemPedidoDAO {
         return mesas;
     }
 
-    // 🔹 Lista itens filtrando por ID do pedido
+
     public List<ItemPedidoModel> listarItensPorPedido(int idPedido) throws SQLException {
         List<ItemPedidoModel> itens = new ArrayList<>();
 
@@ -131,7 +130,7 @@ public class ItemPedidoDAO {
         return itens;
     }
 
-    // 🔹 Lista itens filtrando por número da mesa
+   
     public List<ItemPedidoModel> listarItensPorMesa(int numeroMesa) throws SQLException {
         List<ItemPedidoModel> itens = new ArrayList<>();
 
@@ -177,26 +176,25 @@ public class ItemPedidoDAO {
         }
     }
 
-    // 🔹 Método auxiliar para mapear o ResultSet em ItemPedidoModel
+  
     private ItemPedidoModel mapResultSetToItemPedido(ResultSet rs) throws SQLException {
-        // Cardápio
+       
         ItemCardapioModel cardapio = new ItemCardapioModel();
         cardapio.setID_Cardapio(rs.getInt("ID_Cardapio"));
         cardapio.setNome(rs.getString("nome_cardapio"));
         cardapio.setPreco(rs.getDouble("preco_cardapio"));
 
-        // Mesa
+       
         MesaModel mesa = new MesaModel();
         mesa.setNumeroMesa(rs.getInt("numero_mesa"));
 
-        // Pedido
         PedidoModel pedido = new PedidoModel();
         pedido.setID_Pedido(rs.getInt("ID_pedido"));
         pedido.setHoraPedido(rs.getTimestamp("hora_pedido").toLocalDateTime());
         pedido.setStatusPedido(rs.getBoolean("status_pedido"));
         pedido.setID_Mesa(mesa);
 
-        // ItemPedido
+
         ItemPedidoModel item = new ItemPedidoModel();
         item.setID_Item(rs.getInt("ID_item"));
         item.setQuantidade(rs.getInt("qtd_pedido"));
@@ -208,3 +206,4 @@ public class ItemPedidoDAO {
         return item;
     }
 }
+
