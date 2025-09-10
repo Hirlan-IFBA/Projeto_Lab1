@@ -68,20 +68,19 @@ public class PedidoController extends HttpServlet {
     private void criarPedido(HttpServletRequest request, HttpServletResponse response) throws Exception {
         int numeroMesa = Integer.parseInt(request.getParameter("numeroMesa"));
 
-        // 1️⃣ Cria o pedido
+     
         PedidoModel pedido = new PedidoModel();
         MesaModel mesa = new MesaModel();
         mesa.setNumeroMesa(numeroMesa);
         pedido.setID_Mesa(mesa);
 
-        // 2️⃣ Inicializa a hora e o status do pedido
-        pedido.setHoraPedido(java.time.LocalDateTime.now()); // evita NullPointerException
-        pedido.setStatusPedido(false); // false = em preparo
+        
+        pedido.setHoraPedido(java.time.LocalDateTime.now()); 
+        pedido.setStatusPedido(false);
 
-        // 3️⃣ Salva no banco
+      
         pedidoDAO.criarPedido(pedido); 
 
-        // 4️⃣ Cria itens do pedido se houver
         String[] idsCardapio = request.getParameterValues("idCardapio");
         String[] quantidades = request.getParameterValues("quantidade");
 
@@ -119,3 +118,4 @@ public class PedidoController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
+
