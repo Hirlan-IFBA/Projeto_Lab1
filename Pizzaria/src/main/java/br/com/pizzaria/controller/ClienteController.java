@@ -83,15 +83,15 @@ public class ClienteController extends HttpServlet {
         String nome = request.getParameter("nome");
         String telefone = request.getParameter("telefone");
 
-        // Se o CPF foi alterado, verifica duplicidade
+        
         if (!cpfAntigo.equals(cpfNovo) && clienteDAO.clienteExiste(cpfNovo)) {
-            // CPF já existe
+           
             request.setAttribute("erro", "Erro: CPF já cadastrado!");
             listarClientes(request, response);
             return;
         }
 
-        // Atualiza cliente
+      
         ClienteModel cliente = new ClienteModel(cpfNovo, nome, telefone);
         clienteDAO.alterarClienteComCpf(cliente , cpfAntigo); // método que permite alterar CPF
         response.sendRedirect("ClienteController?action=listar");
@@ -111,3 +111,4 @@ public class ClienteController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
+
