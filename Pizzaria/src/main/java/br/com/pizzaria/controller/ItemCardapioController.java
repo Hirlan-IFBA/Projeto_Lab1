@@ -64,7 +64,7 @@ public class ItemCardapioController extends HttpServlet {
         double preco = Double.parseDouble(request.getParameter("preco"));
         String descricao = request.getParameter("descricao");
 
-     
+        
         ItemCardapioModel item = new ItemCardapioModel(nome, preco, descricao);
         itemDAO.criarItem(item);
 
@@ -95,4 +95,3 @@ public class ItemCardapioController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
-

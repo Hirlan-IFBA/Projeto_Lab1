@@ -12,7 +12,6 @@
         listaItensPedido = new java.util.ArrayList<>();
     }
 
-    // Obtém as mesas existentes
     MesaDAO mesaDAO = new MesaDAO(Conexao.getConnection());
     List<MesaModel> mesasExistentes = mesaDAO.listarMesas();
 %>
@@ -60,7 +59,7 @@
             if (request.getParameter("numeroMesa") != null && !request.getParameter("numeroMesa").isEmpty()) {
                 int filtroMesa = Integer.parseInt(request.getParameter("numeroMesa"));
                 if (item.getID_Pedido().getID_Mesa().getNumeroMesa() != filtroMesa) {
-                    continue; // pula itens que não correspondem à mesa selecionada
+                    continue;
                 }
             }
     %>

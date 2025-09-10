@@ -21,7 +21,6 @@
 <body>
     <h1>Lista de Clientes</h1>
 
-    <!-- Exibir mensagem de erro, se houver -->
     <% if (erro != null) { %>
         <div class="erro"><%= erro %></div>
     <% } %>

@@ -54,8 +54,7 @@
                     <input type="hidden" name="id" value="<%= item.getID_Cardapio() %>" />
                     <button type="submit">Deletar</button>
                 </form>
-                
-               
+                       
                  <form action="<%= request.getContextPath() %>/ItemCardapioController" method="post">
                     <input type="hidden" name="action" value="editar" />
                     <input type="hidden" name="id" value="<%= item.getID_Cardapio() %>" />
@@ -82,4 +81,3 @@
     <a href="index.jsp" class="voltar" >Voltar ao Menu</a></div>
 </body>
 </html>
-

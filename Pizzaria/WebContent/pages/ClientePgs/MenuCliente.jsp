@@ -12,7 +12,6 @@
 
     <a href="<%= request.getContextPath() %>/ClienteController?action=listar" class="voltar">Listar Clientes</a><br><br>
 
-    <!-- Formulário de cadastro -->
     <form action="<%= request.getContextPath() %>/ClienteController" method="post" class="desc">
         <input type="hidden" name="action" value="adicionar" />
         CPF: <input type="text" name="cpf" required /><br><br>
@@ -21,7 +20,6 @@
         <button type="submit">Adicionar Cliente</button>
     </form>
 
-    <!-- Mensagem de erro -->
     <% 
         String erro = (String) request.getAttribute("erro"); 
         if (erro != null) { 

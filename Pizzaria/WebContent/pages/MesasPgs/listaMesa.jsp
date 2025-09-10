@@ -42,7 +42,7 @@
             <td><%= (mesa.getStatus() != null && mesa.getStatus()) ? "Ocupada" : "Livre" %></td>
             <td><%= (c != null && c.getCPF() != null) ? c.getCPF() : "" %></td>
             <td>
-                <!-- Editar mesa -->
+               
                 <form action="MesaController" method="get">
                     <input type="hidden" name="action" value="editarForm" />
                     <input type="hidden" name="numeroMesa" value="<%= mesa.getNumeroMesa() %>" />

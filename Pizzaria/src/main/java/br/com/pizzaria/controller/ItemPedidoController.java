@@ -70,7 +70,7 @@ public class ItemPedidoController extends HttpServlet {
         int idCardapio = Integer.parseInt(request.getParameter("idCardapio"));
         int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 
-      
+        
         ItemCardapioModel cardapio = itemCardapioDAO.buscarPorId(idCardapio);
         if (cardapio == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Item do cardápio não encontrado");
@@ -121,11 +121,11 @@ public class ItemPedidoController extends HttpServlet {
     }
 
     protected void listarItensPedido(HttpServletRequest request, HttpServletResponse response) throws Exception {
-       
+      
         List<Integer> mesasExistentes = itemPedidoDAO.listarMesasExistentes();
         request.setAttribute("mesasExistentes", mesasExistentes);
 
-
+      
         String numeroMesaParam = request.getParameter("numeroMesa");
         List<ItemPedidoModel> itens;
         if (numeroMesaParam != null && !numeroMesaParam.isEmpty()) {
@@ -141,4 +141,3 @@ public class ItemPedidoController extends HttpServlet {
     }
 
 }
-

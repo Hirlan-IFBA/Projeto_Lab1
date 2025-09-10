@@ -35,6 +35,7 @@ public class ItemPedidoDAO {
         }
     }
 
+    
     public List<ItemPedidoModel> listarItensPedido() throws SQLException {
         return listarItensPorMesa(null);
     }
@@ -61,24 +62,21 @@ public class ItemPedidoDAO {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    
+ 
                     ItemCardapioModel cardapio = new ItemCardapioModel();
                     cardapio.setID_Cardapio(rs.getInt("ID_Cardapio"));
                     cardapio.setNome(rs.getString("nome_cardapio"));
                     cardapio.setPreco(rs.getDouble("preco_cardapio"));
-
-              
+   
                     MesaModel mesa = new MesaModel();
                     mesa.setNumeroMesa(rs.getInt("numero_mesa"));
 
-    
                     PedidoModel pedido = new PedidoModel();
                     pedido.setID_Pedido(rs.getInt("ID_pedido"));
                     pedido.setHoraPedido(rs.getTimestamp("hora_pedido").toLocalDateTime());
                     pedido.setStatusPedido(rs.getBoolean("status_pedido"));
                     pedido.setID_Mesa(mesa);
 
-                    // ItemPedido
                     ItemPedidoModel item = new ItemPedidoModel();
                     item.setID_Item(rs.getInt("ID_item"));
                     item.setQuantidade(rs.getInt("qtd_pedido"));
@@ -105,7 +103,6 @@ public class ItemPedidoDAO {
         return mesas;
     }
 
-
     public List<ItemPedidoModel> listarItensPorPedido(int idPedido) throws SQLException {
         List<ItemPedidoModel> itens = new ArrayList<>();
 
@@ -130,7 +127,6 @@ public class ItemPedidoDAO {
         return itens;
     }
 
-   
     public List<ItemPedidoModel> listarItensPorMesa(int numeroMesa) throws SQLException {
         List<ItemPedidoModel> itens = new ArrayList<>();
 
@@ -176,15 +172,13 @@ public class ItemPedidoDAO {
         }
     }
 
-  
     private ItemPedidoModel mapResultSetToItemPedido(ResultSet rs) throws SQLException {
-       
+
         ItemCardapioModel cardapio = new ItemCardapioModel();
         cardapio.setID_Cardapio(rs.getInt("ID_Cardapio"));
         cardapio.setNome(rs.getString("nome_cardapio"));
         cardapio.setPreco(rs.getDouble("preco_cardapio"));
 
-       
         MesaModel mesa = new MesaModel();
         mesa.setNumeroMesa(rs.getInt("numero_mesa"));
 
@@ -193,7 +187,6 @@ public class ItemPedidoDAO {
         pedido.setHoraPedido(rs.getTimestamp("hora_pedido").toLocalDateTime());
         pedido.setStatusPedido(rs.getBoolean("status_pedido"));
         pedido.setID_Mesa(mesa);
-
 
         ItemPedidoModel item = new ItemPedidoModel();
         item.setID_Item(rs.getInt("ID_item"));
@@ -206,4 +199,3 @@ public class ItemPedidoDAO {
         return item;
     }
 }
-

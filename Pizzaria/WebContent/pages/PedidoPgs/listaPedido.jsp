@@ -6,11 +6,10 @@
 <%@ page import="br.com.pizzaria.DAO.MesaDAO" %>
 <%@ page import="br.com.pizzaria.utils.Conexao" %>
 <%
-    // Lista de itens do cardápio
+    
     ItemCardapioDAO cardapioDAO = new ItemCardapioDAO(Conexao.getConnection());
     List<ItemCardapioModel> listaCardapio = cardapioDAO.listarItens();
 
-    // Lista de mesas já cadastradas
     MesaDAO mesaDAO = new MesaDAO(Conexao.getConnection());
     List<MesaModel> listaMesas = mesaDAO.listarMesas();
 %>
@@ -66,7 +65,7 @@
     <form action="<%=request.getContextPath()%>/PedidoController" method="post" class="desc">
         <input type="hidden" name="action" value="novoPedidoComItens">
 
-        <!-- Select de mesas existentes -->
+      
         Número da Mesa: 
         <select name="numeroMesa" required>
             <option value="">Selecione</option>

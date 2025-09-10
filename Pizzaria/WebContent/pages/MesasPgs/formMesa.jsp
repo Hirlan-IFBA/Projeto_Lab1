@@ -8,7 +8,6 @@
 <%
     MesaModel mesa = (MesaModel) request.getAttribute("mesa");
 
-    // Buscar todos os clientes cadastrados
     ClienteDAO clienteDAO = new ClienteDAO(Conexao.getConnection());
     List<ClienteModel> clientes = clienteDAO.listarClientes();
 %>

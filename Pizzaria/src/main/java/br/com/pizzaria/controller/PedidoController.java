@@ -68,17 +68,17 @@ public class PedidoController extends HttpServlet {
     private void criarPedido(HttpServletRequest request, HttpServletResponse response) throws Exception {
         int numeroMesa = Integer.parseInt(request.getParameter("numeroMesa"));
 
-     
+
         PedidoModel pedido = new PedidoModel();
         MesaModel mesa = new MesaModel();
         mesa.setNumeroMesa(numeroMesa);
         pedido.setID_Mesa(mesa);
 
-        
-        pedido.setHoraPedido(java.time.LocalDateTime.now()); 
-        pedido.setStatusPedido(false);
 
-      
+        pedido.setHoraPedido(java.time.LocalDateTime.now()); 
+        pedido.setStatusPedido(false); 
+
+    
         pedidoDAO.criarPedido(pedido); 
 
         String[] idsCardapio = request.getParameterValues("idCardapio");
@@ -118,4 +118,3 @@ public class PedidoController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
-
