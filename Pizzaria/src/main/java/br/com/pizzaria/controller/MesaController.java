@@ -80,7 +80,6 @@ public class MesaController extends HttpServlet {
         ClienteModel cliente = (cpfCliente != null && !cpfCliente.isEmpty()) ? new ClienteModel() : null;
         if (cliente != null) cliente.setCPF(cpfCliente);
 
-        // numeroMesa será gerado pelo banco (AUTO_INCREMENT)
         MesaModel mesa = new MesaModel(0, status, cliente);
         mesaDAO.criarMesa(mesa);
 
@@ -115,3 +114,4 @@ public class MesaController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
+
